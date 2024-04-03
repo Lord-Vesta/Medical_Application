@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../mycontacts backed"
+		},
+		{
+			"name": "DatabaseProjectMedical",
+			"path": "../rest-api/DatabaseProjectMedical"
+		}
+	],
+	"settings": {}
+}
