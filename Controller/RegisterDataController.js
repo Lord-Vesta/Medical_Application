@@ -1,13 +1,17 @@
 const fs = require("fs");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 const RegisterData = JSON.parse(fs.readFileSync("RegisterData.json"));
 
 // @desc Add registration data
 // @route POST /api/PatientData
 // @access private
-const AddRegistrationData = (req, res) => {
+const AddRegistrationData = async (req, res) => {
   let patientId;
-
+  let { email, password } = req.body;
+  const myEncPassword = await bcrypt.hash(password, 10);
+  console.log("encrypted");
+  console.log(myEncPassword);
   if (RegisterData.length === 0) {
     patientId = 1;
   } else if (RegisterData.length > 0) {
@@ -21,6 +25,15 @@ const AddRegistrationData = (req, res) => {
       data: newData,
     });
   });
+
+  const token = jwt.sign(
+    {email,password},"shhhh",
+    {
+        expiresIn: "2h"
+    }
+  );
+    console.log("token");
+  console.log(token);
 };
 
 // @desc Delete registered data

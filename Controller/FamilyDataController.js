@@ -10,7 +10,7 @@ const getFamilyData = (req, res) => {
     status: "fetched",
     data: FamilyData,
   });
-};
+};  
 
 // @desc Add family data
 // @route POST /api/FamilyData
