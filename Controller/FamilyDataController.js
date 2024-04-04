@@ -1,4 +1,3 @@
-const { json } = require("express");
 const fs = require("fs");
 
 let FamilyData = JSON.parse(fs.readFileSync("FamilyData.json"));
